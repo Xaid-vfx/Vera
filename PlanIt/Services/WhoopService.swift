@@ -14,7 +14,7 @@ final class WhoopService: NSObject, ObservableObject, ASWebAuthenticationPresent
     // MARK: - Constants
     private let authURL   = "https://api.prod.whoop.com/oauth/oauth2/auth"
     private let tokenURL  = "https://api.prod.whoop.com/oauth/oauth2/token"
-    private let apiBase   = "https://api.prod.whoop.com/developer/v1"
+    private let apiBase   = "https://api.prod.whoop.com/developer/v2"
     private let redirectURI = "com.planit.app://oauth/whoop"
     private let scopes    = "read:recovery read:sleep read:cycles read:profile offline"
 
@@ -169,42 +169,63 @@ final class WhoopService: NSObject, ObservableObject, ASWebAuthenticationPresent
 
     // MARK: - Data Fetching
     func fetchData() async -> WhoopData? {
-        guard isConnected, let token = accessToken else { return nil }
+        guard isConnected else { return nil }
 
-        do {
-            async let recovery = fetchRecovery(token: token)
-            async let sleep    = fetchSleep(token: token)
-            async let cycle    = fetchCycle(token: token)
-            return await WhoopData(recovery: try recovery, sleep: try sleep, cycle: try cycle)
-        } catch {
-            // Try refresh once
+        // Try with current token, refresh once on 401
+        for attempt in 1...2 {
+            guard let token = accessToken else { return nil }
             do {
-                try await refreshAccessToken()
-                return await fetchData()
+                async let recovery = fetchRecovery(token: token)
+                async let sleep    = fetchSleep(token: token)
+                async let cycle    = fetchCycle(token: token)
+                let data = try await WhoopData(recovery: recovery, sleep: sleep, cycle: cycle)
+                let rec = data.recoveryScore.map { "\($0)" } ?? "nil"
+                let str = data.strainScore.map { "\($0)" } ?? "nil"
+                appLogger.notice("[Whoop] Fetched data — recovery: \(rec), strain: \(str)")
+                return data
+            } catch URLError.userAuthenticationRequired where attempt == 1 {
+                appLogger.notice("[Whoop] 401 — refreshing token")
+                do { try await refreshAccessToken() } catch {
+                    appLogger.notice("[Whoop] Token refresh failed: \(error.localizedDescription)")
+                    return nil
+                }
             } catch {
                 appLogger.notice("[Whoop] Fetch failed: \(error.localizedDescription)")
                 return nil
             }
         }
+        return nil
     }
 
     private func fetchRecovery(token: String) async throws -> WhoopRecoveryResponse {
-        try await get("\(apiBase)/recovery?limit=1&nextToken=", token: token)
+        try await get("\(apiBase)/recovery?limit=1", token: token)
     }
 
     private func fetchSleep(token: String) async throws -> WhoopSleepResponse {
-        try await get("\(apiBase)/sleep?limit=1", token: token)
+        try await get("\(apiBase)/activity/sleep?limit=1", token: token)
     }
 
     private func fetchCycle(token: String) async throws -> WhoopCycleResponse {
         try await get("\(apiBase)/cycle?limit=1", token: token)
     }
 
+    // V2 recovery comes embedded in cycle — but also available standalone at /v2/recovery
+
     private func get<T: Decodable>(_ urlString: String, token: String) async throws -> T {
         var request = URLRequest(url: URL(string: urlString)!)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        let (data, _) = try await URLSession.shared.data(for: request)
-        return try JSONDecoder().decode(T.self, from: data)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let status = (response as? HTTPURLResponse)?.statusCode ?? 0
+        if status == 401 {
+            throw URLError(.userAuthenticationRequired)
+        }
+        do {
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            let body = String(data: data, encoding: .utf8) ?? "<binary>"
+            appLogger.notice("[Whoop] HTTP \(status) decode error for \(urlString): \(body)")
+            throw error
+        }
     }
 
     // MARK: - PKCE
@@ -243,9 +264,10 @@ struct WhoopData {
     init(recovery: WhoopRecoveryResponse, sleep: WhoopSleepResponse, cycle: WhoopCycleResponse) {
         let r = recovery.records.first?.score
         recoveryScore    = r?.recovery_score
-        sleepPerformance = r?.sleep_performance_percentage
         hrv              = r?.hrv_rmssd_milli
         rhr              = r?.resting_heart_rate
+        let s = sleep.records.first?.score
+        sleepPerformance = s?.sleep_performance_percentage
         strainScore      = cycle.records.first?.score?.strain
     }
 }
@@ -255,6 +277,7 @@ private struct TokenResponse: Codable {
     let refresh_token: String?
 }
 
+// V2 collection responses wrap records in a `records` array
 struct WhoopRecoveryResponse: Codable {
     let records: [WhoopRecovery]
 }
@@ -263,9 +286,10 @@ struct WhoopRecovery: Codable {
 }
 struct WhoopRecoveryScore: Codable {
     let recovery_score: Int?
-    let sleep_performance_percentage: Int?
-    let hrv_rmssd_milli: Double?
     let resting_heart_rate: Double?
+    let hrv_rmssd_milli: Double?
+    let spo2_percentage: Double?
+    let skin_temp_celsius: Double?
 }
 
 struct WhoopSleepResponse: Codable {
@@ -276,6 +300,16 @@ struct WhoopSleep: Codable {
 }
 struct WhoopSleepScore: Codable {
     let sleep_performance_percentage: Int?
+    let sleep_consistency_percentage: Int?
+    let sleep_efficiency_percentage: Int?
+    let respiratory_rate: Double?
+    let stage_summary: WhoopSleepStageSummary?
+}
+struct WhoopSleepStageSummary: Codable {
+    let total_rem_sleep_time_milli: Int?
+    let total_slow_wave_sleep_time_milli: Int?
+    let total_light_sleep_time_milli: Int?
+    let total_awake_time_milli: Int?
 }
 
 struct WhoopCycleResponse: Codable {
@@ -286,4 +320,6 @@ struct WhoopCycle: Codable {
 }
 struct WhoopCycleScore: Codable {
     let strain: Double?
+    let kilojoule: Double?
+    let average_heart_rate: Int?
 }

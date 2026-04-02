@@ -182,20 +182,34 @@ final class GoogleCalendarService: NSObject, ObservableObject, ASWebAuthenticati
             .init(name: "maxResults",   value: "20"),
         ]
 
+        var fetchedData: Data?
         do {
             var request = URLRequest(url: components.url!)
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             let (data, response) = try await URLSession.shared.data(for: request)
+            fetchedData = data
 
-            if (response as? HTTPURLResponse)?.statusCode == 401 {
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+            if statusCode == 401 {
+                appLogger.notice("[Google] 401 — refreshing token")
                 try await refreshAccessToken()
                 return await fetchEvents(for: day)
             }
 
-            let result = try JSONDecoder().decode(GoogleCalendarEventList.self, from: data)
+            if statusCode != 200 {
+                let body = String(data: data, encoding: .utf8) ?? "<binary>"
+                appLogger.notice("[Google] Fetch events HTTP \(statusCode): \(body)")
+                return []
+            }
+
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let result = try decoder.decode(GoogleCalendarEventList.self, from: data)
+            appLogger.notice("[Google] Fetched \(result.items.count) events")
             return result.items.compactMap { CalendarEvent(from: $0) }
         } catch {
-            appLogger.notice("[Google] Fetch events error: \(error.localizedDescription)")
+            let body = fetchedData.flatMap { String(data: $0, encoding: .utf8) } ?? "<no data>"
+            appLogger.notice("[Google] Fetch events error: \(error.localizedDescription) | body: \(body)")
             return []
         }
     }
