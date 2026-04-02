@@ -17,6 +17,7 @@
 		29DCB079A2CABEC5CA80AC5C /* PlatformCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A045549DB3174C546685D3 /* PlatformCompat.swift */; };
 		2BC5A96ED2CBAAEC268395CF /* ConversationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843E15DACAB910F263AF11F /* ConversationMessage.swift */; };
 		2BEE16982BC46D882A06EA95 /* VoiceSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */; };
+		3A63447046CBA83D2BCF1EB0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA7BC56E2711A431A07A0E /* OnboardingView.swift */; };
 		56922A0654ACD57A5A3947C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F0A24A989A1CA51B94687 /* TextToSpeechService.swift */; };
 		56E0DAACAF2036210D6D6ACB /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBEBBEA8F9C37B008B97EB8 /* SessionViewModel.swift */; };
 		56F57C4B5497923C452CF88E /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D46E1049DA3DEE3B1BEAB7 /* TaskRowView.swift */; };
@@ -38,6 +39,7 @@
 		9C86F4B4229858939B634E91 /* PlanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AECBB2BB1CE863AA035DC /* PlanTask.swift */; };
 		A0A23BBECF235F01E7227309 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F657F11AED60E55C812069 /* CalendarEvent.swift */; };
 		A957DDBAE32E7E28345C737F /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4448B081B9D8DF5636C04 /* GoogleCalendarService.swift */; };
+		A9F5A54EF23BC64340817F52 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA7BC56E2711A431A07A0E /* OnboardingView.swift */; };
 		AC436AD22BCB66E789B7A047 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E7834B1ADC785DE071F4 /* Logger.swift */; };
 		AED8FBABB3820F485D39045F /* PlanItShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F247337A0F0023AFA93D5F /* PlanItShortcuts.swift */; };
 		B797C7812C448A7D457C4C61 /* VoiceSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC70CF581D4888005B57C89 /* VoiceSessionManager.swift */; };
@@ -70,6 +72,7 @@
 		8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanResultView.swift; sourceTree = "<group>"; };
 		8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9AE6816FB06463059DD3F63F /* StartPlanningIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPlanningIntent.swift; sourceTree = "<group>"; };
+		9EBA7BC56E2711A431A07A0E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSessionView.swift; sourceTree = "<group>"; };
 		A501FB736E92DA03BD000633 /* WhoopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoopService.swift; sourceTree = "<group>"; };
 		A9FA70062C81C9AC18B104D9 /* PlanIt.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */,
+				9EBA7BC56E2711A431A07A0E /* OnboardingView.swift */,
 				8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */,
 				14D46E1049DA3DEE3B1BEAB7 /* TaskRowView.swift */,
 				9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */,
@@ -266,6 +270,7 @@
 				13386D7A3CD90BC5E2BFA5D6 /* HealthKitService.swift in Sources */,
 				83AB5F745FDFF78C6B34F41B /* HomeView.swift in Sources */,
 				22A45E4F058912C72A152E5C /* Logger.swift in Sources */,
+				A9F5A54EF23BC64340817F52 /* OnboardingView.swift in Sources */,
 				DD1AE5A8EF87760A6D9ABC3D /* PlanItApp.swift in Sources */,
 				20F7E72DA98825DC2BF12AA2 /* PlanItShortcuts.swift in Sources */,
 				BD07BC8883F37AAC9E4D7624 /* PlanResultView.swift in Sources */,
@@ -296,6 +301,7 @@
 				FDD790F274E0D8DCB07B5D02 /* HealthKitService.swift in Sources */,
 				59C6F3FEC86629DEF06D39FA /* HomeView.swift in Sources */,
 				AC436AD22BCB66E789B7A047 /* Logger.swift in Sources */,
+				3A63447046CBA83D2BCF1EB0 /* OnboardingView.swift in Sources */,
 				155D9C12E55B13D37CF1F316 /* PlanItApp.swift in Sources */,
 				AED8FBABB3820F485D39045F /* PlanItShortcuts.swift in Sources */,
 				28284894B60B0F145D5CD458 /* PlanResultView.swift in Sources */,

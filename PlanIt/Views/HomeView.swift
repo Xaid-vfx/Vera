@@ -160,9 +160,6 @@ struct SettingsSheet: View {
 
     @State private var selectedVoiceId: String = ""
     @State private var availableVoices: [(name: String, identifier: String, quality: String)] = []
-    @State private var whoopClientId: String = ""
-    @State private var whoopClientSecret: String = ""
-    @State private var googleClientId: String = ""
 
     var body: some View {
         NavigationStack {
@@ -239,33 +236,22 @@ struct SettingsSheet: View {
                             .font(.caption)
                         }
                     } else {
-                        SecureField("Client ID", text: $whoopClientId)
-                            #if os(iOS)
-                            .textInputAutocapitalization(.never)
-                            #endif
-                            .autocorrectionDisabled()
-                        SecureField("Client Secret", text: $whoopClientSecret)
-                            #if os(iOS)
-                            .textInputAutocapitalization(.never)
-                            #endif
-                            .autocorrectionDisabled()
                         Button {
-                            whoopService.clientId     = whoopClientId
-                            whoopService.clientSecret = whoopClientSecret
                             Task { await whoopService.connect() }
                         } label: {
                             if whoopService.isLoading {
                                 ProgressView().frame(maxWidth: .infinity)
                             } else {
-                                Text("Connect Whoop").frame(maxWidth: .infinity)
+                                Label("Connect Whoop", systemImage: "link")
+                                    .frame(maxWidth: .infinity)
                             }
                         }
-                        .disabled(whoopClientId.isEmpty || whoopClientSecret.isEmpty || whoopService.isLoading)
+                        .disabled(whoopService.isLoading)
                     }
                     if let err = whoopService.error {
                         Text(err).font(.caption).foregroundStyle(.red)
                     }
-                    Text("Get credentials at developer.whoop.com — enables recovery score, HRV, strain, and sleep performance in your plan.")
+                    Text("Enables recovery score, HRV, strain, and sleep performance in your plan.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } header: {
@@ -285,27 +271,22 @@ struct SettingsSheet: View {
                             .font(.caption)
                         }
                     } else {
-                        SecureField("OAuth Client ID", text: $googleClientId)
-                            #if os(iOS)
-                            .textInputAutocapitalization(.never)
-                            #endif
-                            .autocorrectionDisabled()
                         Button {
-                            googleCalendarService.clientId = googleClientId
                             Task { await googleCalendarService.connect() }
                         } label: {
                             if googleCalendarService.isLoading {
                                 ProgressView().frame(maxWidth: .infinity)
                             } else {
-                                Text("Connect Google Calendar").frame(maxWidth: .infinity)
+                                Label("Connect Google Calendar", systemImage: "link")
+                                    .frame(maxWidth: .infinity)
                             }
                         }
-                        .disabled(googleClientId.isEmpty || googleCalendarService.isLoading)
+                        .disabled(googleCalendarService.isLoading)
                     }
                     if let err = googleCalendarService.error {
                         Text(err).font(.caption).foregroundStyle(.red)
                     }
-                    Text("Get an OAuth 2.0 Client ID from console.cloud.google.com — enables reading today's events and writing your plan to your calendar.")
+                    Text("Reads today's events and writes your finalized plan to Google Calendar.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } header: {
