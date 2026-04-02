@@ -1,0 +1,560 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		063E86DEFA7EB057ECD67431 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC651EB2192D70AA0D0ADF /* AIService.swift */; };
+		13386D7A3CD90BC5E2BFA5D6 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85B19BDE6B9B0CFA443A91 /* HealthKitService.swift */; };
+		155D9C12E55B13D37CF1F316 /* PlanItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C915D6846B1CA25FFA7417 /* PlanItApp.swift */; };
+		18DB4CD7A88D341BC9FD6AE6 /* VoiceSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */; };
+		20F7E72DA98825DC2BF12AA2 /* PlanItShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F247337A0F0023AFA93D5F /* PlanItShortcuts.swift */; };
+		22A45E4F058912C72A152E5C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E7834B1ADC785DE071F4 /* Logger.swift */; };
+		28284894B60B0F145D5CD458 /* PlanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */; };
+		29DCB079A2CABEC5CA80AC5C /* PlatformCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A045549DB3174C546685D3 /* PlatformCompat.swift */; };
+		2BC5A96ED2CBAAEC268395CF /* ConversationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843E15DACAB910F263AF11F /* ConversationMessage.swift */; };
+		2BEE16982BC46D882A06EA95 /* VoiceSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */; };
+		56922A0654ACD57A5A3947C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F0A24A989A1CA51B94687 /* TextToSpeechService.swift */; };
+		56E0DAACAF2036210D6D6ACB /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBEBBEA8F9C37B008B97EB8 /* SessionViewModel.swift */; };
+		56F57C4B5497923C452CF88E /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D46E1049DA3DEE3B1BEAB7 /* TaskRowView.swift */; };
+		59C6F3FEC86629DEF06D39FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */; };
+		5A2CA031188024DE1AEFB840 /* WhoopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501FB736E92DA03BD000633 /* WhoopService.swift */; };
+		66F07D2DFD7DE4AA5C84116C /* HealthContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282711B05D8F4A6F1F0F2037 /* HealthContext.swift */; };
+		7BDAEEFB4BE9EE4DA3BA260A /* ConversationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1843E15DACAB910F263AF11F /* ConversationMessage.swift */; };
+		83AB5F745FDFF78C6B34F41B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */; };
+		8560129D8A9F4A1FE1357BEB /* DayPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AE26400C9BB729A6AAEB6 /* DayPlan.swift */; };
+		88BE23D39316EABBF68BB6BF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C7CFEA088DF91E4B8C92A /* APIKeys.swift */; };
+		8FB11207015BA0147A8E291E /* VoiceSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC70CF581D4888005B57C89 /* VoiceSessionManager.swift */; };
+		90640C16E3542A068944BF37 /* StartPlanningIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6816FB06463059DD3F63F /* StartPlanningIntent.swift */; };
+		91D4BC60D69426791DA5F1AD /* PlatformCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A045549DB3174C546685D3 /* PlatformCompat.swift */; };
+		951D0C0700421FFE26716A48 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C7CFEA088DF91E4B8C92A /* APIKeys.swift */; };
+		97095770389AEBADC775FA89 /* PlanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AECBB2BB1CE863AA035DC /* PlanTask.swift */; };
+		9807AA0A227EF361444A8806 /* StartPlanningIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6816FB06463059DD3F63F /* StartPlanningIntent.swift */; };
+		9A9D6AFF58B5B8679DA8933B /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F657F11AED60E55C812069 /* CalendarEvent.swift */; };
+		9C2E12E302E2517C12E2E301 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F0A24A989A1CA51B94687 /* TextToSpeechService.swift */; };
+		9C86F4B4229858939B634E91 /* PlanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04AECBB2BB1CE863AA035DC /* PlanTask.swift */; };
+		A0A23BBECF235F01E7227309 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F657F11AED60E55C812069 /* CalendarEvent.swift */; };
+		A957DDBAE32E7E28345C737F /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4448B081B9D8DF5636C04 /* GoogleCalendarService.swift */; };
+		AC436AD22BCB66E789B7A047 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E7834B1ADC785DE071F4 /* Logger.swift */; };
+		AED8FBABB3820F485D39045F /* PlanItShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F247337A0F0023AFA93D5F /* PlanItShortcuts.swift */; };
+		B797C7812C448A7D457C4C61 /* VoiceSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC70CF581D4888005B57C89 /* VoiceSessionManager.swift */; };
+		BD07BC8883F37AAC9E4D7624 /* PlanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */; };
+		C7BDBB01C521443E9F690145 /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4448B081B9D8DF5636C04 /* GoogleCalendarService.swift */; };
+		D71BDEBE77E11C261BDBDBD5 /* WhoopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501FB736E92DA03BD000633 /* WhoopService.swift */; };
+		DD1AE5A8EF87760A6D9ABC3D /* PlanItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C915D6846B1CA25FFA7417 /* PlanItApp.swift */; };
+		E6AB15E70F07295841272494 /* HealthContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282711B05D8F4A6F1F0F2037 /* HealthContext.swift */; };
+		E6FACC6210FA85F80F1E3AE7 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC651EB2192D70AA0D0ADF /* AIService.swift */; };
+		EF0486329385316F9C826C2D /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D46E1049DA3DEE3B1BEAB7 /* TaskRowView.swift */; };
+		F02543342D58F0265DEBE3ED /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBEBBEA8F9C37B008B97EB8 /* SessionViewModel.swift */; };
+		F027F23A03619EDA4F563690 /* DayPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AE26400C9BB729A6AAEB6 /* DayPlan.swift */; };
+		F4870FF76DD36036E0F69F7E /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C65FFD272CC29F604D0102 /* SpeechRecognitionService.swift */; };
+		F690ACC2C0F3EDA7EB34EDF1 /* SpeechRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C65FFD272CC29F604D0102 /* SpeechRecognitionService.swift */; };
+		FDD790F274E0D8DCB07B5D02 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85B19BDE6B9B0CFA443A91 /* HealthKitService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		042F0A24A989A1CA51B94687 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
+		0A76E7834B1ADC785DE071F4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		14D46E1049DA3DEE3B1BEAB7 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		1843E15DACAB910F263AF11F /* ConversationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessage.swift; sourceTree = "<group>"; };
+		1D1AE26400C9BB729A6AAEB6 /* DayPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlan.swift; sourceTree = "<group>"; };
+		282711B05D8F4A6F1F0F2037 /* HealthContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthContext.swift; sourceTree = "<group>"; };
+		31F247337A0F0023AFA93D5F /* PlanItShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItShortcuts.swift; sourceTree = "<group>"; };
+		3AC70CF581D4888005B57C89 /* VoiceSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSessionManager.swift; sourceTree = "<group>"; };
+		43C915D6846B1CA25FFA7417 /* PlanItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanItApp.swift; sourceTree = "<group>"; };
+		7CBEBBEA8F9C37B008B97EB8 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		85C65FFD272CC29F604D0102 /* SpeechRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionService.swift; sourceTree = "<group>"; };
+		8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanResultView.swift; sourceTree = "<group>"; };
+		8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9AE6816FB06463059DD3F63F /* StartPlanningIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPlanningIntent.swift; sourceTree = "<group>"; };
+		9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSessionView.swift; sourceTree = "<group>"; };
+		A501FB736E92DA03BD000633 /* WhoopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoopService.swift; sourceTree = "<group>"; };
+		A9FA70062C81C9AC18B104D9 /* PlanIt.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C96C7CFEA088DF91E4B8C92A /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		D4F657F11AED60E55C812069 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		DB85B19BDE6B9B0CFA443A91 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		DDB4448B081B9D8DF5636C04 /* GoogleCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarService.swift; sourceTree = "<group>"; };
+		DE4167E526D6AB841C2E032C /* PlanIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10A401B9C11F7FB136B1057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E3A045549DB3174C546685D3 /* PlatformCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCompat.swift; sourceTree = "<group>"; };
+		E8FCBDE1B25B621B7C53773D /* PlanIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlanIt.entitlements; sourceTree = "<group>"; };
+		EBBC651EB2192D70AA0D0ADF /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		F04AECBB2BB1CE863AA035DC /* PlanTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTask.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2FEC7B47C0EC94EE7D2E70D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9FA70062C81C9AC18B104D9 /* PlanIt.app */,
+				DE4167E526D6AB841C2E032C /* PlanIt.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31E79BB244A4F9EEB220D5D0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7CBEBBEA8F9C37B008B97EB8 /* SessionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		373E114956B2775517EB8840 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EBBC651EB2192D70AA0D0ADF /* AIService.swift */,
+				C96C7CFEA088DF91E4B8C92A /* APIKeys.swift */,
+				DDB4448B081B9D8DF5636C04 /* GoogleCalendarService.swift */,
+				DB85B19BDE6B9B0CFA443A91 /* HealthKitService.swift */,
+				0A76E7834B1ADC785DE071F4 /* Logger.swift */,
+				E3A045549DB3174C546685D3 /* PlatformCompat.swift */,
+				85C65FFD272CC29F604D0102 /* SpeechRecognitionService.swift */,
+				042F0A24A989A1CA51B94687 /* TextToSpeechService.swift */,
+				3AC70CF581D4888005B57C89 /* VoiceSessionManager.swift */,
+				A501FB736E92DA03BD000633 /* WhoopService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		43013336145DB03099612290 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				31F247337A0F0023AFA93D5F /* PlanItShortcuts.swift */,
+				9AE6816FB06463059DD3F63F /* StartPlanningIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		71BCB1D7B261419ED00D5FEB = {
+			isa = PBXGroup;
+			children = (
+				9BEF913E9A5CFE7CE65C7764 /* PlanIt */,
+				2FEC7B47C0EC94EE7D2E70D3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7AC081BF73658C1BE03DC978 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E10A401B9C11F7FB136B1057 /* Info.plist */,
+				E8FCBDE1B25B621B7C53773D /* PlanIt.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		907BF46809C45BCA3C0B1EAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4F657F11AED60E55C812069 /* CalendarEvent.swift */,
+				1843E15DACAB910F263AF11F /* ConversationMessage.swift */,
+				1D1AE26400C9BB729A6AAEB6 /* DayPlan.swift */,
+				282711B05D8F4A6F1F0F2037 /* HealthContext.swift */,
+				F04AECBB2BB1CE863AA035DC /* PlanTask.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9BEF913E9A5CFE7CE65C7764 /* PlanIt */ = {
+			isa = PBXGroup;
+			children = (
+				43C915D6846B1CA25FFA7417 /* PlanItApp.swift */,
+				43013336145DB03099612290 /* Intents */,
+				907BF46809C45BCA3C0B1EAF /* Models */,
+				7AC081BF73658C1BE03DC978 /* Resources */,
+				373E114956B2775517EB8840 /* Services */,
+				31E79BB244A4F9EEB220D5D0 /* ViewModels */,
+				AFDE5C06C0D7FDF5787948F2 /* Views */,
+			);
+			path = PlanIt;
+			sourceTree = "<group>";
+		};
+		AFDE5C06C0D7FDF5787948F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */,
+				8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */,
+				14D46E1049DA3DEE3B1BEAB7 /* TaskRowView.swift */,
+				9F69C0CC5AC54028D81F42B9 /* VoiceSessionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2236A730D0CF0A1586995F7B /* PlanIt_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97D1B75483C8F2EB0F1AEB0C /* Build configuration list for PBXNativeTarget "PlanIt_iOS" */;
+			buildPhases = (
+				F37D596DFE477BB0398DFE0D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlanIt_iOS;
+			packageProductDependencies = (
+			);
+			productName = PlanIt_iOS;
+			productReference = A9FA70062C81C9AC18B104D9 /* PlanIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4E54E4920B80E7CF113E18C8 /* PlanIt_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0CCE5F2813B7E493AEF4627 /* Build configuration list for PBXNativeTarget "PlanIt_macOS" */;
+			buildPhases = (
+				8939A97A732C7D34F747BBD8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlanIt_macOS;
+			packageProductDependencies = (
+			);
+			productName = PlanIt_macOS;
+			productReference = DE4167E526D6AB841C2E032C /* PlanIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78249E68876738658FD010C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 79E3CE6A7677C59F479B09E0 /* Build configuration list for PBXProject "PlanIt" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 71BCB1D7B261419ED00D5FEB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2FEC7B47C0EC94EE7D2E70D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2236A730D0CF0A1586995F7B /* PlanIt_iOS */,
+				4E54E4920B80E7CF113E18C8 /* PlanIt_macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8939A97A732C7D34F747BBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				063E86DEFA7EB057ECD67431 /* AIService.swift in Sources */,
+				88BE23D39316EABBF68BB6BF /* APIKeys.swift in Sources */,
+				A0A23BBECF235F01E7227309 /* CalendarEvent.swift in Sources */,
+				2BC5A96ED2CBAAEC268395CF /* ConversationMessage.swift in Sources */,
+				F027F23A03619EDA4F563690 /* DayPlan.swift in Sources */,
+				C7BDBB01C521443E9F690145 /* GoogleCalendarService.swift in Sources */,
+				E6AB15E70F07295841272494 /* HealthContext.swift in Sources */,
+				13386D7A3CD90BC5E2BFA5D6 /* HealthKitService.swift in Sources */,
+				83AB5F745FDFF78C6B34F41B /* HomeView.swift in Sources */,
+				22A45E4F058912C72A152E5C /* Logger.swift in Sources */,
+				DD1AE5A8EF87760A6D9ABC3D /* PlanItApp.swift in Sources */,
+				20F7E72DA98825DC2BF12AA2 /* PlanItShortcuts.swift in Sources */,
+				BD07BC8883F37AAC9E4D7624 /* PlanResultView.swift in Sources */,
+				97095770389AEBADC775FA89 /* PlanTask.swift in Sources */,
+				29DCB079A2CABEC5CA80AC5C /* PlatformCompat.swift in Sources */,
+				F02543342D58F0265DEBE3ED /* SessionViewModel.swift in Sources */,
+				F690ACC2C0F3EDA7EB34EDF1 /* SpeechRecognitionService.swift in Sources */,
+				9807AA0A227EF361444A8806 /* StartPlanningIntent.swift in Sources */,
+				EF0486329385316F9C826C2D /* TaskRowView.swift in Sources */,
+				9C2E12E302E2517C12E2E301 /* TextToSpeechService.swift in Sources */,
+				B797C7812C448A7D457C4C61 /* VoiceSessionManager.swift in Sources */,
+				2BEE16982BC46D882A06EA95 /* VoiceSessionView.swift in Sources */,
+				5A2CA031188024DE1AEFB840 /* WhoopService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F37D596DFE477BB0398DFE0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6FACC6210FA85F80F1E3AE7 /* AIService.swift in Sources */,
+				951D0C0700421FFE26716A48 /* APIKeys.swift in Sources */,
+				9A9D6AFF58B5B8679DA8933B /* CalendarEvent.swift in Sources */,
+				7BDAEEFB4BE9EE4DA3BA260A /* ConversationMessage.swift in Sources */,
+				8560129D8A9F4A1FE1357BEB /* DayPlan.swift in Sources */,
+				A957DDBAE32E7E28345C737F /* GoogleCalendarService.swift in Sources */,
+				66F07D2DFD7DE4AA5C84116C /* HealthContext.swift in Sources */,
+				FDD790F274E0D8DCB07B5D02 /* HealthKitService.swift in Sources */,
+				59C6F3FEC86629DEF06D39FA /* HomeView.swift in Sources */,
+				AC436AD22BCB66E789B7A047 /* Logger.swift in Sources */,
+				155D9C12E55B13D37CF1F316 /* PlanItApp.swift in Sources */,
+				AED8FBABB3820F485D39045F /* PlanItShortcuts.swift in Sources */,
+				28284894B60B0F145D5CD458 /* PlanResultView.swift in Sources */,
+				9C86F4B4229858939B634E91 /* PlanTask.swift in Sources */,
+				91D4BC60D69426791DA5F1AD /* PlatformCompat.swift in Sources */,
+				56E0DAACAF2036210D6D6ACB /* SessionViewModel.swift in Sources */,
+				F4870FF76DD36036E0F69F7E /* SpeechRecognitionService.swift in Sources */,
+				90640C16E3542A068944BF37 /* StartPlanningIntent.swift in Sources */,
+				56F57C4B5497923C452CF88E /* TaskRowView.swift in Sources */,
+				56922A0654ACD57A5A3947C0 /* TextToSpeechService.swift in Sources */,
+				8FB11207015BA0147A8E291E /* VoiceSessionManager.swift in Sources */,
+				18DB4CD7A88D341BC9FD6AE6 /* VoiceSessionView.swift in Sources */,
+				D71BDEBE77E11C261BDBDBD5 /* WhoopService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0059E3348BA6A61E327279ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = PlanIt/Resources/PlanIt.entitlements;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = PlanIt/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		377A296534AAF4831B176193 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlanIt/Resources/PlanIt.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = PlanIt/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.planit.app;
+				PRODUCT_NAME = PlanIt;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		510E4E794B6760ABD8E6DA7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlanIt/Resources/PlanIt.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = PlanIt/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.planit.app;
+				PRODUCT_NAME = PlanIt;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BF32EF1102D53B03CAF7776B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlanIt/Resources/PlanIt.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = PlanIt/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.planit.app;
+				PRODUCT_NAME = PlanIt;
+				SDKROOT = macosx;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+			};
+			name = Debug;
+		};
+		E007731621A800747992AA60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = PlanIt/Resources/PlanIt.entitlements;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = PlanIt/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		FCD588DE6996EA3AB6809BED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlanIt/Resources/PlanIt.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = PlanIt/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.planit.app;
+				PRODUCT_NAME = PlanIt;
+				SDKROOT = macosx;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79E3CE6A7677C59F479B09E0 /* Build configuration list for PBXProject "PlanIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0059E3348BA6A61E327279ED /* Debug */,
+				E007731621A800747992AA60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		97D1B75483C8F2EB0F1AEB0C /* Build configuration list for PBXNativeTarget "PlanIt_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				377A296534AAF4831B176193 /* Debug */,
+				510E4E794B6760ABD8E6DA7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E0CCE5F2813B7E493AEF4627 /* Build configuration list for PBXNativeTarget "PlanIt_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF32EF1102D53B03CAF7776B /* Debug */,
+				FCD588DE6996EA3AB6809BED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78249E68876738658FD010C4 /* Project object */;
+}
