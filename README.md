@@ -25,13 +25,55 @@ Plan your day in under 5 minutes, hands-free. Speak naturally, and Vera builds a
 
 ---
 
-## Requirements
+## Prerequisites
 
-- Xcode 15+
-- iOS 17+ / macOS 14+ (Mac Catalyst)
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`)
-- Groq API key (free at [console.groq.com](https://console.groq.com))
-- OpenRouter API key (free tier available at [openrouter.ai](https://openrouter.ai))
+Before you can build and run Vera, make sure you have the following installed and configured.
+
+### System
+
+| Requirement | Version | Notes |
+|-------------|---------|-------|
+| macOS | 14 (Sonoma)+ | Required to run Xcode 15+ |
+| Xcode | 15+ | Install from the [Mac App Store](https://apps.apple.com/app/xcode/id497799835) |
+| iOS device or simulator | iOS 17+ | Speech recognition works best on a real device |
+
+### Tools
+
+```bash
+# Homebrew (if not already installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# XcodeGen — generates the Xcode project from project.yml
+brew install xcodegen
+```
+
+### API Accounts
+
+You need accounts (all have free tiers) for:
+
+| Service | Sign-up | What it's used for |
+|---------|---------|-------------------|
+| **Groq** | [console.groq.com](https://console.groq.com) | Primary AI (llama-3.3-70b, fast & free) |
+| **OpenRouter** | [openrouter.ai](https://openrouter.ai) | AI fallback when Groq is rate-limited |
+| **Whoop** *(optional)* | [developer.whoop.com](https://developer.whoop.com) | Recovery score, HRV, strain in your greeting |
+| **Google Cloud** *(optional)* | [console.cloud.google.com](https://console.cloud.google.com) | Read/write Google Calendar events |
+
+> Groq and OpenRouter are **required**. Whoop and Google Calendar are optional — the app works without them but won't show health context or write events.
+
+### Setting up Google Calendar (optional)
+
+1. Create a project in Google Cloud Console
+2. Enable the **Google Calendar API**
+3. Create an **OAuth 2.0 Client ID** → Application type: **iOS**
+4. Set Bundle ID to `com.planit.app`
+5. The redirect URI is automatically: `com.googleusercontent.apps.<your-client-id>:/`
+
+### Setting up Whoop (optional)
+
+1. Go to [developer.whoop.com](https://developer.whoop.com) and register an application
+2. Set the redirect URI to `com.planit.app://oauth/whoop`
+3. Request scopes: `read:recovery read:sleep read:cycles read:profile offline`
+4. Copy your Client ID and Client Secret into `APIKeys.swift`
 
 ---
 
