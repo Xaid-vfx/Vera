@@ -28,3 +28,9 @@ Packages/
 
 # CocoaPods
 Pods/
+
+# API keys — copy APIKeys.swift.template to APIKeys.swift and fill in your credentials
+PlanIt/Services/APIKeys.swift
+
+# Session notes (may contain tokens/UDIDs)
+SESSION_NOTES.md

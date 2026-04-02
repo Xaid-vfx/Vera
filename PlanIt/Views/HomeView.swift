@@ -119,6 +119,16 @@ struct HomeView: View {
         }
         .toolbar {
             ToolbarItem(placement: .automatic) {
+                NavigationLink {
+                    ConnectedServicesView(
+                        whoopService: viewModel.sessionManager.whoopService,
+                        googleCalendarService: viewModel.sessionManager.googleCalendarService
+                    )
+                } label: {
+                    Image(systemName: "app.connected.to.app.below.fill")
+                }
+            }
+            ToolbarItem(placement: .automatic) {
                 Button {
                     groqKeyInput = viewModel.savedGroqKey
                     openRouterKeyInput = viewModel.savedOpenRouterKey

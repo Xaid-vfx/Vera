@@ -45,6 +45,8 @@
 		B797C7812C448A7D457C4C61 /* VoiceSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC70CF581D4888005B57C89 /* VoiceSessionManager.swift */; };
 		BD07BC8883F37AAC9E4D7624 /* PlanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */; };
 		C7BDBB01C521443E9F690145 /* GoogleCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB4448B081B9D8DF5636C04 /* GoogleCalendarService.swift */; };
+		C80D770B88BB25366588DA13 /* ConnectedServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD63E8D975D19B59EC3AF179 /* ConnectedServicesView.swift */; };
+		CCFFA6B4C8E45D37621FD59D /* ConnectedServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD63E8D975D19B59EC3AF179 /* ConnectedServicesView.swift */; };
 		D71BDEBE77E11C261BDBDBD5 /* WhoopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A501FB736E92DA03BD000633 /* WhoopService.swift */; };
 		DD1AE5A8EF87760A6D9ABC3D /* PlanItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C915D6846B1CA25FFA7417 /* PlanItApp.swift */; };
 		E6AB15E70F07295841272494 /* HealthContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282711B05D8F4A6F1F0F2037 /* HealthContext.swift */; };
@@ -86,6 +88,7 @@
 		E8FCBDE1B25B621B7C53773D /* PlanIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlanIt.entitlements; sourceTree = "<group>"; };
 		EBBC651EB2192D70AA0D0ADF /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
 		F04AECBB2BB1CE863AA035DC /* PlanTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTask.swift; sourceTree = "<group>"; };
+		FD63E8D975D19B59EC3AF179 /* ConnectedServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedServicesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -178,6 +181,7 @@
 		AFDE5C06C0D7FDF5787948F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FD63E8D975D19B59EC3AF179 /* ConnectedServicesView.swift */,
 				8EA4757E13B7D29AEDE5CF9A /* HomeView.swift */,
 				9EBA7BC56E2711A431A07A0E /* OnboardingView.swift */,
 				8810CA5364ABA8CA71AF8A88 /* PlanResultView.swift */,
@@ -263,6 +267,7 @@
 				063E86DEFA7EB057ECD67431 /* AIService.swift in Sources */,
 				88BE23D39316EABBF68BB6BF /* APIKeys.swift in Sources */,
 				A0A23BBECF235F01E7227309 /* CalendarEvent.swift in Sources */,
+				C80D770B88BB25366588DA13 /* ConnectedServicesView.swift in Sources */,
 				2BC5A96ED2CBAAEC268395CF /* ConversationMessage.swift in Sources */,
 				F027F23A03619EDA4F563690 /* DayPlan.swift in Sources */,
 				C7BDBB01C521443E9F690145 /* GoogleCalendarService.swift in Sources */,
@@ -294,6 +299,7 @@
 				E6FACC6210FA85F80F1E3AE7 /* AIService.swift in Sources */,
 				951D0C0700421FFE26716A48 /* APIKeys.swift in Sources */,
 				9A9D6AFF58B5B8679DA8933B /* CalendarEvent.swift in Sources */,
+				CCFFA6B4C8E45D37621FD59D /* ConnectedServicesView.swift in Sources */,
 				7BDAEEFB4BE9EE4DA3BA260A /* ConversationMessage.swift in Sources */,
 				8560129D8A9F4A1FE1357BEB /* DayPlan.swift in Sources */,
 				A957DDBAE32E7E28345C737F /* GoogleCalendarService.swift in Sources */,

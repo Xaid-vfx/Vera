@@ -146,30 +146,58 @@ final class WhoopService: NSObject, ObservableObject, ASWebAuthenticationPresent
     }
 
     private func refreshAccessToken() async throws {
-        guard let refresh = refreshToken else { throw URLError(.userAuthenticationRequired) }
+        guard let refresh = refreshToken else {
+            appLogger.notice("[Whoop] No refresh token stored — re-auth required")
+            throw URLError(.userAuthenticationRequired)
+        }
 
         var request = URLRequest(url: URL(string: tokenURL)!)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
-        let body = [
-            "grant_type":    "refresh_token",
-            "refresh_token": refresh,
-            "client_id":     clientId,
-            "client_secret": clientSecret,
-        ].map { "\($0.key)=\($0.value)" }.joined(separator: "&")
+        // Percent-encode each value individually to handle special chars in tokens
+        func encode(_ s: String) -> String {
+            s.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? s
+        }
+        let bodyParts = [
+            "grant_type=refresh_token",
+            "refresh_token=\(encode(refresh))",
+            "client_id=\(encode(clientId))",
+            "client_secret=\(encode(clientSecret))",
+        ]
+        request.httpBody = bodyParts.joined(separator: "&").data(using: .utf8)
 
-        request.httpBody = body.data(using: .utf8)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let status = (response as? HTTPURLResponse)?.statusCode ?? 0
+        let rawBody = String(data: data, encoding: .utf8) ?? "<binary>"
+        appLogger.notice("[Whoop] Refresh response HTTP \(status): \(rawBody)")
 
-        let (data, _) = try await URLSession.shared.data(for: request)
-        let token = try JSONDecoder().decode(TokenResponse.self, from: data)
-        accessToken  = token.access_token
-        if let r = token.refresh_token { refreshToken = r }
+        do {
+            let token = try JSONDecoder().decode(TokenResponse.self, from: data)
+            accessToken  = token.access_token
+            if let r = token.refresh_token { refreshToken = r }
+            appLogger.notice("[Whoop] Token refreshed successfully")
+        } catch {
+            // If refresh failed with 4xx the token is dead — force re-auth
+            if status == 400 || status == 401 {
+                appLogger.notice("[Whoop] Refresh token expired — marking disconnected")
+                accessToken  = nil
+                refreshToken = nil
+                isConnected  = false
+            }
+            throw error
+        }
     }
 
     // MARK: - Data Fetching
     func fetchData() async -> WhoopData? {
-        guard isConnected else { return nil }
+        let hasToken = accessToken != nil
+        let hasRefresh = refreshToken != nil
+        appLogger.notice("[Whoop] fetchData — isConnected=\(self.isConnected) hasAccessToken=\(hasToken) hasRefreshToken=\(hasRefresh)")
+        guard isConnected else {
+            appLogger.notice("[Whoop] Skipping fetch — not connected")
+            return nil
+        }
 
         // Try with current token, refresh once on 401
         for attempt in 1...2 {

@@ -1,0 +1,17 @@
+import Foundation
+
+enum APIKeys {
+    // Groq — https://console.groq.com
+    static let groq = "YOUR_GROQ_API_KEY"
+
+    // OpenRouter — https://openrouter.ai/keys
+    static let openRouter = "YOUR_OPENROUTER_API_KEY"
+
+    // Whoop Developer Portal — https://developer.whoop.com
+    static let whoopClientId     = "YOUR_WHOOP_CLIENT_ID"
+    static let whoopClientSecret = "YOUR_WHOOP_CLIENT_SECRET"
+
+    // Google Cloud Console — iOS OAuth 2.0 client with Calendar API enabled
+    // https://console.cloud.google.com
+    static let googleClientId = "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+}

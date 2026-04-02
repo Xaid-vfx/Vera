@@ -41,7 +41,7 @@ final class AIService {
         healthContext: HealthContext?,
         currentPlan: DayPlan?
     ) async throws -> AIResponse {
-        // Try Groq first (primary), fall back to OpenRouter
+        // Try Groq first (primary), fall back to OpenRouter on any failure
         do {
             return try await callProvider(
                 .groq,
@@ -51,17 +51,43 @@ final class AIService {
                 healthContext: healthContext,
                 currentPlan: currentPlan
             )
-        } catch {
-            print("[AIService] Groq failed: \(error.localizedDescription). Falling back to OpenRouter.")
-            return try await callProvider(
-                .openRouter,
-                apiKey: openRouterKey,
-                transcript: transcript,
-                conversationHistory: conversationHistory,
-                healthContext: healthContext,
-                currentPlan: currentPlan
-            )
+        } catch let groqError {
+            appLogger.notice("[AI] Groq failed (\(groqError.localizedDescription)) — trying OpenRouter")
+            do {
+                return try await callProvider(
+                    .openRouter,
+                    apiKey: openRouterKey,
+                    transcript: transcript,
+                    conversationHistory: conversationHistory,
+                    healthContext: healthContext,
+                    currentPlan: currentPlan
+                )
+            } catch let openRouterError {
+                // Both providers failed — throw a user-friendly error
+                appLogger.notice("[AI] OpenRouter also failed: \(openRouterError.localizedDescription)")
+                throw friendlyError(groqError: groqError, openRouterError: openRouterError)
+            }
         }
+    }
+
+    /// Converts raw API errors into spoken-friendly messages the TTS can read aloud.
+    private func friendlyError(groqError: Error, openRouterError: Error) -> AIError {
+        // Check if it's a rate limit (429)
+        if case AIError.apiError(let code, let body) = groqError, code == 429 {
+            let isTokenLimit = body.contains("token") || body.contains("tokens")
+            let msg = isTokenLimit
+                ? "I've hit the token rate limit on both AI providers. Wait a minute and try again."
+                : "Both AI providers are rate-limited right now. Please wait about a minute and try again."
+            return .userFacing(msg)
+        }
+        if case AIError.apiError(let code, _) = openRouterError, code == 429 {
+            return .userFacing("Both AI providers are rate-limited right now. Please wait about a minute and try again.")
+        }
+        // Network error
+        if (groqError as? URLError) != nil {
+            return .userFacing("I couldn't reach the AI — check your internet connection and try again.")
+        }
+        return .userFacing("Something went wrong on my end. Please try again.")
     }
 
     private func callProvider(
@@ -245,11 +271,13 @@ final class AIService {
     enum AIError: LocalizedError {
         case apiError(statusCode: Int, message: String)
         case noContent
+        case userFacing(String)
 
         var errorDescription: String? {
             switch self {
             case .apiError(let code, let msg): return "API error (\(code)): \(msg)"
             case .noContent: return "No content in AI response"
+            case .userFacing(let msg): return msg
             }
         }
     }

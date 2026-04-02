@@ -239,11 +239,17 @@ final class VoiceSessionManager: ObservableObject {
             }
 
         } catch {
-            appLogger.notice("[Session] AI error — resuming listening")
-            self.error = error.localizedDescription
+            appLogger.notice("[Session] AI error: \(error.localizedDescription)")
             isProcessingTurn = false
-            state = .listening
+
+            // Speak user-facing errors aloud so the user hears what went wrong
+            let spokenError = error.localizedDescription
+            self.error = spokenError
+
             try? speechService.startListening()
+            state = .speaking
+            ttsService.speak(spokenError)
+            // After speaking, onFinishedSpeaking will restart listening automatically
         }
 
         liveTranscript = ""
@@ -302,19 +308,69 @@ final class VoiceSessionManager: ObservableObject {
         else if hour < 17 { timeGreeting = "Good afternoon" }
         else { timeGreeting = "Good evening" }
 
-        var greeting = "\(timeGreeting)! I'm ready to help you plan your day."
+        var greeting = "\(timeGreeting)!"
 
+        // Build a spoken health briefing only when we have real data
         if let health = healthContext {
-            if let sleep = health.sleepDuration {
-                if sleep < 6 {
-                    greeting += " Looks like you got about \(String(format: "%.0f", sleep)) hours of sleep, let's keep today manageable."
-                } else if sleep >= 7.5 {
-                    greeting += " You got a solid \(String(format: "%.0f", sleep)) hours of sleep, great foundation for a productive day."
-                }
+            let briefing = buildHealthBriefing(health)
+            if let briefing {
+                greeting += " Before we start — \(briefing)"
+            } else {
+                greeting += " I'm ready to help you plan your day."
             }
+        } else {
+            greeting += " I'm ready to help you plan your day."
         }
 
         greeting += " What's on your mind for today?"
         return greeting
+    }
+
+    /// Returns a 1-2 sentence spoken briefing if enough health data is available, otherwise nil.
+    private func buildHealthBriefing(_ health: HealthContext) -> String? {
+        var sentences: [String] = []
+
+        // --- Recovery line (Whoop preferred, HealthKit HRV as fallback) ---
+        if let score = health.whoopRecoveryScore {
+            // Whoop recovery score — most actionable signal
+            switch score {
+            case 67...100:
+                sentences.append("Your Whoop recovery is at \(score)% — you're well rested and ready to push today.")
+            case 34..<67:
+                let strain = health.whoopStrainScore.map { String(format: ", and yesterday's strain was %.1f", $0) } ?? ""
+                sentences.append("Your Whoop recovery is \(score)%\(strain) — a balanced day is a good call.")
+            default:
+                sentences.append("Your Whoop recovery is low at \(score)% — keep today lighter and prioritise rest.")
+            }
+        } else if let hrv = health.hrvValue {
+            // HealthKit HRV fallback
+            let level = health.recoveryLevel
+            let hrvStr = String(format: "%.0f", hrv)
+            switch level {
+            case .high:
+                sentences.append("Your HRV is \(hrvStr) ms — looking well recovered.")
+            case .moderate:
+                sentences.append("Your HRV is \(hrvStr) ms — moderate recovery, so pace yourself.")
+            case .low:
+                sentences.append("Your HRV is on the lower side at \(hrvStr) ms — a lighter day might serve you better.")
+            default:
+                break
+            }
+        }
+
+        // --- Sleep line (only add if we have it and it's notable) ---
+        if let sleep = health.sleepDuration {
+            let sleepStr = String(format: "%.1f", sleep)
+            if sleep < 6 {
+                sentences.append("You only got \(sleepStr) hours of sleep, so factor in some buffer time.")
+            } else if let sp = health.whoopSleepPerformance, sp < 70 {
+                sentences.append("Sleep performance was \(sp)% — not fully recharged, so plan accordingly.")
+            }
+            // Don't add a sleep line if everything looks good — no need to state the obvious
+        }
+
+        // Only return a briefing if we actually have something meaningful to say
+        guard !sentences.isEmpty else { return nil }
+        return sentences.joined(separator: " ")
     }
 }
