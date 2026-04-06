@@ -295,7 +295,7 @@ struct WhoopData {
         hrv              = r?.hrv_rmssd_milli
         rhr              = r?.resting_heart_rate
         let s = sleep.records.first?.score
-        sleepPerformance = s?.sleep_performance_percentage
+        sleepPerformance = s?.sleep_performance_percentage.map { Int($0.rounded()) }
         strainScore      = cycle.records.first?.score?.strain
     }
 }
@@ -327,9 +327,9 @@ struct WhoopSleep: Codable {
     let score: WhoopSleepScore?
 }
 struct WhoopSleepScore: Codable {
-    let sleep_performance_percentage: Int?
-    let sleep_consistency_percentage: Int?
-    let sleep_efficiency_percentage: Int?
+    let sleep_performance_percentage: Double?
+    let sleep_consistency_percentage: Double?
+    let sleep_efficiency_percentage: Double?
     let respiratory_rate: Double?
     let stage_summary: WhoopSleepStageSummary?
 }
